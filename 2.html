@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #myGeo{
+            width: 100%;
+            height: 600px;
+        }
+    </style>
+    <!--<script src="https://maps.googleapis.com/maps/api/js"></script>-->
+</head>
+<body>
+
+<div id="myGeo"></div>
+<script>
+    function initMap() {
+        var myGeo = document.getElementById("myGeo");
+
+
+//        var options = {
+//            zoom: 13,
+//            scrollwheel: false
+//        };
+//        var map = new google.maps.Map(myGeo, options);
+        navigator.geolocation.getCurrentPosition(function(position){
+            var loc = {lat: position.coords.latitude, lng: position.coords.longitude};
+            var map = new google.maps.Map(myGeo, {
+                center: loc,
+                scrollwheel: false,
+                zoom: 15
+            });
+            var marker = new google.maps.Marker({
+                position: loc,
+                map: map
+            });
+
+            console.log(position.coords.latitude+"/"+position.coords.longitude);
+//            var loc = google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+//            map.setCenter(loc);
+        },function(err){
+            alert(err);
+        });
+    }
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAALGloauCivqmQ01JSMcnzXjFt0Gzn8Lk&callback=initMap"
+        async defer></script>
+
+<!--<div id="myGeo"></div>-->
+    <script>
+//        var myGeo = document.getElementById("myGeo");
+//        var options = {
+//            zoom: 13,
+//
+//        };
+//        var map = new google.maps.Map(myGeo, options);
+//        navigator.geolocation.getCurrentPosition(function(position){
+//            console.log(position.coords.latitude+"/"+position.coords.longitude);
+//            var loc = google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+//            map.setCenter(loc);
+//        },function(err){
+//            alert(err);
+//        });
+    </script>
+</body>
+</html>

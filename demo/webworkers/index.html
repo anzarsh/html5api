@@ -9,7 +9,7 @@
     label {
       float: left
     }
-    
+
     form div {
       text-align: right
     }
@@ -18,35 +18,42 @@
 </head>
 
 <body>
-  <form action="#" method="post" onsubmit="return false">
-    <div>
-      <label for="n">Имя: </label>
-      <input id="n" type="text" name="name" placeholder="Ваше имя" />
-    </div>
-    <div>
-      <button id="b">Запустить цикл</button>
-    </div>
-    <div>
-      <button id="x">Передать имя</button>
-    </div>
-  </form>
-  <div id="d"></div>
-  <script>
+<form action="#" method="post" onsubmit="return false">
+  <div>
+    <label for="n">Имя: </label>
+    <input id="n" type="text" name="name" placeholder="Ваше имя" />
+  </div>
+  <div>
+    <button id="b">Запустить цикл</button>
+  </div>
+  <div>
+    <button id="x">Передать имя</button>
+  </div>
+</form>
+<div id="d"></div>
+<script>
+    var worker = new Worker("worker.js");
     document.getElementById("b").onclick = function () {
-      var div = document.getElementById('d');
-      div.innerHTML = someLoop();
+        var div = document.getElementById('d');
+        worker.postMessage(1);
+        worker.onmessage = function(event){
+            div.innerHTML = event.data;
+        };
     };
     document.getElementById("x").onclick = function () {
-      console.log('Кнопка нажата');
+        var name = document.getElementById('n');
+//        console.log("Hello from worker, " + name.value + "!");
+        worker.postMessage(name.value);
+        worker.onmessage = function(event){
+          console.log("Hello from worker, " + name.value + "!");
+
+        };
     };
 
 
 
-    function someLoop() {
-      for (var x = 1; x <= 1000000000; ++x);
-      return 'Цикл закончен';
-    }
-  </script>
+
+</script>
 </body>
 
 </html>
