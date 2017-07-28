@@ -23,6 +23,22 @@
       Можете добавить новый HTML5 элемент meter и изменять его значение
     **
     */
+    window.onload = function(){
+        var i = 1000000000;
+        var d = document.getElementById("d");
+        var b = document.getElementById("b");
+        var p = document.getElementById("p");
+        b.addEventListener("click", function(){
+          worker = new Worker("worker.js");
+          worker.onmessage = function(w){
+              p.value = Math.round(parseInt(w.data)/i * 100);
+              if(p.value == 100){
+                  alert("Загрузка завершена!");
+              }
+          };
+          worker.postMessage(i);
+        });
+    };
   </script>
   <style>
   </style>
@@ -30,6 +46,7 @@
 
 <body>
   <div id="d"></div>
+  <progress max="100" value="0" id="p"></progress>
   <div>
     <button id="b">Запустить цикл</button>
   </div>
