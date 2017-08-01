@@ -10,9 +10,55 @@
 </head>
 
 <body>
-  
+  One file: <input type="file" name="" id="myFile"><br>
+  Many files: <input type="file" name="" id="myFiles" multiple><br>
+  Binary: <input type="file" name="" id="binary">
+  <div id="content"></div>
   <script>
-    
+      var output = document.getElementById("content");
+      document.getElementById("binary").onchange = getBinary;
+      function getBinary(e){
+          var file = e.currentTarget.files[0];
+          var out = "";
+          var reader = new FileReader();
+          reader.onload = function(e){
+              var result = e.currentTarget.result;
+              for(var i = 0; i < result.length; i++){
+                aByte = result.charCodeAt(i);
+                byteStr = aByte.toString(16);
+                out += byteStr + " ";
+            }
+            console.log(out);
+          };
+          reader.readAsBinaryString(file, "utf-8");
+      }
+
+
+
+      document.getElementById("myFiles").onchange = getFiles;
+      function getFiles(e){
+          var files = e.currentTarget.files;
+          for(var i = 0; i < files.length; i++){
+              var file = files[i];
+              var reader = new FileReader();
+              reader.onload = function(e){
+                  output.textContent += e.currentTarget.result;
+              };
+              reader.readAsText(file, "utf-8");
+          }
+      }
+
+
+      document.getElementById("myFile").onchange = getFile;
+      function getFile(e) {
+          var file = e.currentTarget.files[0];
+//          console.log(file);
+          var reader = new FileReader();
+          reader.onload = function(e){
+              output.textContent = e.currentTarget.result;
+          };
+          reader.readAsText(file);
+      }
   </script>
 </body>
 
