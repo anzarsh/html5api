@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="file" name="" id="file">
+    <progress max="100" value="0" id="progress"></progress>
+    <div></div>
+    <img src="" alt="" id="img">
+    <script>
+        var file = document.getElementById("file");
+        var progress = document.getElementById("progress");
+        var img = document.getElementById("img");
+        file.onchange = function(e){
+            var file = e.currentTarget.files[0];
+            var fr = new FileReader();
+            fr.onprogress = function(e){
+                progress.value = Math.round((e.loaded/e.total)*100);
+            };
+            fr.onload = function(e){
+                progress.value = 100;
+                img.src = e.currentTarget.result;
+            };
+            fr.readAsDataURL(file, "utf-8");
+        };
+    </script>
+</body>
+</html>

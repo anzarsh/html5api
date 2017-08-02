@@ -14,8 +14,10 @@
   Many files: <input type="file" name="" id="myFiles" multiple><br>
   Binary: <input type="file" name="" id="binary">
   <div id="content"></div>
+  <img src="" alt="" id="myImage">
   <script>
       var output = document.getElementById("content");
+      var img = document.getElementById("myImage");
       document.getElementById("binary").onchange = getBinary;
       function getBinary(e){
           var file = e.currentTarget.files[0];
@@ -23,14 +25,17 @@
           var reader = new FileReader();
           reader.onload = function(e){
               var result = e.currentTarget.result;
-              for(var i = 0; i < result.length; i++){
-                aByte = result.charCodeAt(i);
-                byteStr = aByte.toString(16);
-                out += byteStr + " ";
-            }
-            console.log(out);
+//              for(var i = 0; i < result.length; i++){
+//                aByte = result.charCodeAt(i);
+//                byteStr = aByte.toString(16);
+//                out += byteStr + " ";
+//              }
+//              console.log(out);
+              console.log(result);
+              img.src = result;
           };
-          reader.readAsBinaryString(file, "utf-8");
+//          reader.readAsBinaryString(file, "utf-8");
+          reader.readAsDataURL(file, "utf-8");
       }
 
 

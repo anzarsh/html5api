@@ -10,16 +10,36 @@
       height: 50px;
       border: 3px dotted grey;
     }
+    div#area {
+      width: 200px;
+      height: 200px;
+      border: 3px dotted green;
+    }
   </style>
-  
+
 </head>
 
 <body>
-  <div></div>
-  <script>
+<div draggable="true"></div>
+<div id="area"
+     ondragenter="dragEnter()"
+     ondragover="return dragOver()"
+     ondragleave="return dragLeave()"
+     ondrop="drop()"></div>
+
+<!--ondragstart="dragStart()"-->
+<!--ondrag="drag()"-->
+<!--ondragend="dragEnd()"></div>-->
+<script>
     var div = document.getElementsByTagName("div")[0];
-    
-  </script>
+    function dragEnter(){ console.log("Enter"); }
+    function dragOver(){ console.log("Over"); return false; }
+    function dragLeave(){ console.log("Leave"); return false; }
+    function drop(){ console.log("Drop"); }
+    //    function dragStart(){ console.log("start"); }
+    //    function drag(){ console.log("drag"); }
+    //    function dragEnd(){ console.log("end"); }
+</script>
 </body>
 
 </html>

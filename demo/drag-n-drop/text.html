@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 200px;
+            height: 200px;
+            margin: 10px;
+            border: 3px dotted gray;
+            position: relative;
+            overflow: hidden;
+
+        }
+        #box img{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 140%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <p>Закинь сюда картинку</p>
+    <div id="box"></div>
+
+    <script>
+        var box = document.getElementById("box");
+        box.ondragenter = onDrag;
+        box.ondragover = onDrag;
+        box.ondrop = onDrop;
+        function onDrag(e){
+            e.stopPropagation();
+            e.preventDefault();
+        }
+        function onDrop(e){
+            e.stopPropagation();
+            e.preventDefault();
+            var file = e.dataTransfer.files[0];
+//            console.log(file);
+            var reader = new FileReader();
+            reader.onload = function(e){
+                var img = new Image();
+                img.src = e.currentTarget.result;
+                box.appendChild(img);
+            };
+            reader.readAsDataURL(file)
+        }
+    </script>
+</body>
+</html>
