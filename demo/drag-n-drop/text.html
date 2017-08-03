@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-        #box{
+        #box, #box2{
             width: 200px;
             height: 200px;
             margin: 10px;
@@ -16,7 +16,7 @@
             overflow: hidden;
 
         }
-        #box img{
+        #box img, #box2 img{
             position: absolute;
             top: 50%;
             left: 50%;
@@ -29,12 +29,37 @@
 <body>
     <p>Закинь сюда картинку</p>
     <div id="box"></div>
-
+    <div id="box2"></div>
+    <img id="i1" draggable="true" src="green.png" alt="" width="200" height="200">
+    <img id="i2" draggable="true" src="red.png" alt="" width="200" height="200">
     <script>
         var box = document.getElementById("box");
+        var box2 = document.getElementById("box2");
+
         box.ondragenter = onDrag;
         box.ondragover = onDrag;
         box.ondrop = onDrop;
+
+        box2.ondragenter = onDrag;
+        box2.ondragover = onDrag;
+        box2.ondrop = onDrop2;
+
+        document.getElementById("i1").ondragstart = onDragStart;
+        document.getElementById("i2").ondragstart = onDragStart;
+
+        function onDragStart(e){
+            e.dataTransfer.setData("Text", e.target.id);
+            e.dataTransfer.setDragImage(e.target, -10, -10);
+        }
+
+        function onDrop2(e) {
+            e.stopPropagation();
+            e.preventDefault();
+//            console.log(e.dataTransfer.getData("text"));
+//            box2.textContent = e.dataTransfer.getData("text");
+            box2.appendChild(document.getElementById(e.dataTransfer.getData("text")));
+        }
+
         function onDrag(e){
             e.stopPropagation();
             e.preventDefault();
@@ -43,14 +68,18 @@
             e.stopPropagation();
             e.preventDefault();
             var file = e.dataTransfer.files[0];
+            if(file) {
 //            console.log(file);
-            var reader = new FileReader();
-            reader.onload = function(e){
-                var img = new Image();
-                img.src = e.currentTarget.result;
-                box.appendChild(img);
-            };
-            reader.readAsDataURL(file)
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    var img = new Image();
+                    img.src = e.currentTarget.result;
+                    box.appendChild(img);
+                };
+                reader.readAsDataURL(file)
+            } else{
+                box.appendChild(document.getElementById(e.dataTransfer.getData("text")));
+            }
         }
     </script>
 </body>

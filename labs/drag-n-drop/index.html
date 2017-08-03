@@ -44,16 +44,19 @@
     
     div#area-yellow {
       border: 3px solid yellow;
+      border-color: yellow;
       left: 10px;
     }
     
     div#area-red {
       border: 3px solid red;
+      border-color: red;
       left: 100px;
     }
     
     div#area-gray {
       border: 3px solid gray;
+      border-color: gray;
       left: 190px;
     }
   </style>
@@ -74,12 +77,65 @@
 </head>
 
 <body>
-  <div id="element-red"></div>
-  <div id="element-gray"></div>
-  <div id="element-yellow"></div>
+  <div id="element-red" draggable="true"></div>
+  <div id="element-gray" draggable="true"></div>
+  <div id="element-yellow" draggable="true"></div>
   <div id="area-red"></div>
   <div id="area-gray"></div>
   <div id="area-yellow"></div>
+  <script>
+      var eRed = document.getElementById("element-red");
+      var eGray = document.getElementById("element-gray");
+      var eYellow = document.getElementById("element-yellow");
+      var red = document.getElementById("area-red");
+      var gray = document.getElementById("area-gray");
+      var yellow = document.getElementById("area-yellow");
+
+      eRed.ondragstart = dragStart;
+      eGray.ondragstart = dragStart;
+      eYellow.ondragstart = dragStart;
+
+      function dragStart(e){
+//          e.preventDefault();
+//          e.stopPropagation();
+          e.dataTransfer.setData("text", e.target.id);
+      }
+//
+      red.ondragenter = drag;
+      red.ondragover = drag;
+      gray.ondragenter = drag;
+      gray.ondragover = drag;
+      yellow.ondragenter = drag;
+      yellow.ondragover = drag;
+//
+      function drag(e){
+          e.preventDefault();
+          e.stopPropagation();
+      }
+//
+      red.ondrop = drop;
+      gray.ondrop = drop;
+      yellow.ondrop = drop;
+
+      function drop(e){
+//          console.log(e);
+          e.preventDefault();
+//          e.stopPropagation();
+          var area = e.currentTarget,
+              aStyle = window.getComputedStyle(area),
+              aBorderColor = aStyle.getPropertyValue('border-right-color');
+          var element = document.getElementById(e.dataTransfer.getData("text")),
+              eStyle = window.getComputedStyle(element),
+              eBG = eStyle.getPropertyValue('background-color');
+//          console.log(eBG+"/"+aBorderColor);
+//          console.log(aStyle);
+          if(aBorderColor == eBG){
+              area.appendChild(element);
+              element.style.position = "static";
+          }
+      };
+
+  </script>
 </body>
 
 </html>
