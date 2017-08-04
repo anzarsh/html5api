@@ -30,11 +30,14 @@
     };
 
     function dataSave() {
-
+      localStorage.name = txtName.value;
+      localStorage.setItem("age", txtAge.value);
     }
 
     function dataGet() {
-
+        txtName.value = localStorage['name'];
+        txtAge.value = localStorage.getItem("age");
+        localStorage.removeItem("name");
     }
   </script>
 </head>
