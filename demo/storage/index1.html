@@ -24,10 +24,23 @@
       txtAge = document.getElementById("a");
       btnSave = document.getElementById("b1");
       btnGet = document.getElementById("b2");
+      btnAll = document.getElementById("b3");
       btnSave.addEventListener('click', dataSave, false);
       btnGet.addEventListener('click', dataGet, false);
+      btnAll.addEventListener('click', showStorage, false);
 
     };
+
+    function showStorage(){
+      var ul = document.getElementById("list");
+      ul.innerHTML = "";
+      for (var i = 0; i < localStorage.length; i++){
+        var key = localStorage.key(i);
+        var item = localStorage.getItem(key);
+        ul.innerHTML += "<li>" + key + " : " + item + "</li>";
+      }
+
+    }
 
     function dataSave() {
       localStorage.name = txtName.value;
@@ -55,6 +68,8 @@
     <div>
       <button id="b1">Сохранить</button>
       <button id="b2">Получить</button>
+      <button id="b3">Получить все</button>
+      <ul id="list"></ul>
     </div>
   </form>
 </body>
