@@ -22,7 +22,22 @@
       Добавить функцию updateTable как обработчик события onload текущего окна
     **
     */
-    function updateTable() {}
+    function updateTable() {
+        var output = document.getElementById("output");
+        if(currentStorage.length == 0){
+            output.innerHTML = "<tr><td colspan='4'>" + emptyHeader + "</td></tr>";
+        } else {
+            var str = "";
+            for (var i = 0; i < currentStorage.length; i++){
+                var key = currentStorage.key(i);
+                str += "<tr><td>" + (i+1) +
+                        "</td><td>" + key +
+                        "</td><td>" + currentStorage.getItem(key) +
+                        "</td><td>" + "<span onclick='deleteItem(\"" + key + "\")'>X</span>" + "</td></tr>";
+            }
+            output.innerHTML = str;
+        }
+    }
 
     /*
      **
@@ -34,7 +49,15 @@
             -вызывает функцию updateTable()
     **
     */
-    function getStorage() {}
+    function getStorage() {
+        var storage = document.getElementById("storage");
+        if(storage.selectedIndex == 1){
+            currentStorage = sessionStorage;
+        } else {
+            currentStorage = localStorage;
+        }
+        updateTable();
+    }
 
 
     /*
@@ -48,7 +71,14 @@
           -вызывает updateTable()
     **
     */
-    function saveItem() {}
+    function saveItem() {
+        var key = document.getElementById("key");
+        var value = document.getElementById("value");
+        currentStorage.setItem(key.value, value.value);
+        key.value = "";
+        value.value = "";
+        updateTable();
+    }
 
     /*
      **
@@ -61,7 +91,10 @@
           -вызывает updateTable()
     **
     */
-    function deleteItem(key) {}
+    function deleteItem(key) {
+        currentStorage.removeItem(key);
+        updateTable();
+    }
 
     /*
      **
@@ -73,7 +106,16 @@
           -вызывает updateTable()
     **
     */
-    function clearStorage() {}
+    function clearStorage() {
+        if(confirm("Вы уверены, что хотите полностью очистить локальное хранилище?")){
+            currentStorage.clear();
+            updateTable();
+        }
+    }
+
+    window.addEventListener("DOMContentLoaded", function () {
+        updateTable();
+    })
   </script>
 </head>
 
