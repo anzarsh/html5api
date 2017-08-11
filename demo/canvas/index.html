@@ -19,12 +19,40 @@
 </head>
 
 <body>
-  <canvas id="c" width="500" height="300"></canvas>
+  <canvas id="c" width="500" height="500"></canvas>
 </body>
 <script>
   var canvas = document.getElementById("c");
   var ctx = canvas.getContext("2d");
+
   ctx.beginPath();
+  ctx.moveTo(400, 250);
+  ctx.lineTo(250, 400);
+  ctx.lineTo(100, 250);
+  ctx.lineTo(250, 100);
+//  ctx.bezierCurveTo(140, 10, 338, 10, 388, 170);
+//  ctx.bezierCurveTo(388, 270, 140, 270, 188, 150);
+  ctx.lineWidth = 1;
+  ctx.stroke();
+
+  /*ctx.beginPath();
+  ctx.moveTo(188, 150);
+  ctx.quadraticCurveTo(288, 0, 388, 150);
+  ctx.lineWidth = 5;
+  ctx.stroke();*/
+
+  /*var x = canvas.width/2,
+      y = canvas.height/2,
+      r = 150,
+      a1 = 1.0 * Math.PI,
+      a2 = 2.0 * Math.PI,
+      c = false;
+  ctx.beginPath();
+  ctx.arc(x, y, r, a1, a2, c);
+  ctx.lineWidth = 5;
+  ctx.stroke();*/
+
+  /*ctx.beginPath();
   ctx.moveTo(100, 50);
   ctx.lineTo(450, 50);
   ctx.moveTo(100, 150);
@@ -32,8 +60,7 @@
   ctx.lineWidth = 15;
   ctx.strokeStyle = "#f00";
   ctx.lineCap = "square";
-
-  ctx.stroke();
+  ctx.stroke();*/
 </script>
 
 </html>

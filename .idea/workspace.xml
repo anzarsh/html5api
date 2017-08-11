@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="313dedd1-3098-4245-a6b4-b370ad39fdb7" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/canvas/index.html" afterPath="$PROJECT_DIR$/demo/canvas/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/labs/canvas/grid.html" afterPath="$PROJECT_DIR$/labs/canvas/grid.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -22,22 +20,16 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/demo/canvas/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="518">
-              <caret line="31" column="15" lean-forward="false" selection-start-line="31" selection-start-column="6" selection-end-line="31" selection-end-column="15" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="grid.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/labs/canvas/grid.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="635">
-              <caret line="53" column="20" lean-forward="false" selection-start-line="53" selection-start-column="20" selection-end-line="53" selection-end-column="20" />
-              <folding />
+            <state relative-caret-position="431">
+              <caret line="31" column="19" lean-forward="false" selection-start-line="31" selection-start-column="19" selection-end-line="31" selection-end-column="19" />
+              <folding>
+                <element signature="e#711#834#0" expanded="false" />
+                <element signature="e#838#1063#0" expanded="false" />
+                <element signature="e#1067#1273#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -78,8 +70,8 @@
         <option value="$PROJECT_DIR$/labs/indexeddb/set.html" />
         <option value="$PROJECT_DIR$/demo/indexeddb/get.html" />
         <option value="$PROJECT_DIR$/labs/indexeddb/index.html" />
-        <option value="$PROJECT_DIR$/demo/canvas/index.html" />
         <option value="$PROJECT_DIR$/labs/canvas/grid.html" />
+        <option value="$PROJECT_DIR$/demo/canvas/index.html" />
       </list>
     </option>
   </component>
@@ -90,9 +82,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1456" />
+    <option name="x" value="909" />
+    <option name="width" value="527" />
     <option name="height" value="876" />
   </component>
   <component name="ProjectView">
@@ -289,18 +280,18 @@
       <workItem from="1502177484877" duration="6860000" />
       <workItem from="1502266338752" duration="8104000" />
       <workItem from="1502370287696" duration="3554000" />
-      <workItem from="1502439007821" duration="1631000" />
+      <workItem from="1502439007821" duration="4822000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="64846000" />
+    <option name="totallyTimeSpent" value="68037000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
-    <editor active="true" />
+    <frame x="909" y="0" width="527" height="876" extended-state="0" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17569445" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -333,7 +324,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#711#834#0" expanded="false" />
+            <element signature="e#838#1063#0" expanded="false" />
+            <element signature="e#1067#1273#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -592,19 +587,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/demo/canvas/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="518">
-          <caret line="31" column="15" lean-forward="false" selection-start-line="31" selection-start-column="6" selection-end-line="31" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/labs/canvas/grid.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="635">
           <caret line="53" column="20" lean-forward="false" selection-start-line="53" selection-start-column="20" selection-end-line="53" selection-end-column="20" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demo/canvas/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="431">
+          <caret line="31" column="19" lean-forward="false" selection-start-line="31" selection-start-column="19" selection-end-line="31" selection-end-column="19" />
+          <folding>
+            <element signature="e#711#834#0" expanded="false" />
+            <element signature="e#838#1063#0" expanded="false" />
+            <element signature="e#1067#1273#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
