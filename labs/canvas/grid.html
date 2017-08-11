@@ -3,6 +3,7 @@
 
 <head>
   <title>HTML5 API. Лабораторная работа: макетная сетка</title>
+  <meta charset="utf-8">
   <style>
     body {
       margin: 0;
@@ -28,6 +29,29 @@
         Предусмотреть возможность изменение размеров холста, ячеек сетки и цвета.
     **		
     */
+    function grid(color, lineWidth, size){
+        var canvas = document.getElementById("c");
+        var ctx = canvas.getContext("2d");
+        var width = canvas.width;
+        var height = canvas.height;
+        var cols = Math.floor(width/size);
+        var rows = Math.floor(height/size);
+        ctx.beginPath();
+        ctx.strokeStyle = color;
+        ctx.lineWidth = lineWidth;
+        var size2 = Math.floor(size/2);
+        for (i=0; i<cols; i++){
+            ctx.moveTo(i*size + size2, 0);
+            ctx.lineTo(i*size + size2, height);
+        }
+        for (i=0; i<rows; i++){
+            ctx.moveTo(0, i*size + size2);
+            ctx.lineTo(width, i*size + size2);
+        }
+        ctx.stroke();
+    }
+
+    grid("red", 5, 30);
   </script>
 </body>
 
