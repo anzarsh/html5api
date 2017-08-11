@@ -25,15 +25,83 @@
   var canvas = document.getElementById("c");
   var ctx = canvas.getContext("2d");
 
+  
+function bezierRound(radius, points, center, bezierRadius, color){
   ctx.beginPath();
-  ctx.moveTo(400, 250);
-  ctx.lineTo(250, 400);
-  ctx.lineTo(100, 250);
-  ctx.lineTo(250, 100);
-//  ctx.bezierCurveTo(140, 10, 338, 10, 388, 170);
-//  ctx.bezierCurveTo(388, 270, 140, 270, 188, 150);
+  ctx.strokeStyle = color;
+  var prevX = center.x;
+  var prevY = center.y + radius;
+  var endRand1 = (bezierRadius*(Math.random() * 2 - 1))
+  var endRand2 = (bezierRadius*(Math.random() * 2 - 1))
+  var point1X = prevX + endRand1;
+  var point1Y = prevY + endRand2;
+  ctx.moveTo(prevX, prevY);
+  for (var i = 1; i <= points; i++){
+    var x = center.x + Math.sin((i/points) * (2*Math.PI)) * radius;
+    var y = center.y + Math.cos((i/points) * (2*Math.PI)) * radius;
+
+    // ctx.lineTo(x, y);
+
+    var rand1 = (bezierRadius*(Math.random() * 2 - 1));
+    var rand2 = (bezierRadius*(Math.random() * 2 - 1));
+    var point2X = x + rand1
+    var point2Y = y + rand2;
+
+    ctx.bezierCurveTo(point1X, point1Y, point2X, point2Y, x, y);
+
+    
+    prevX = x;
+    prevY = y;
+    point1X = prevX - rand1;
+    point1Y = prevY - rand2;
+  }
   ctx.lineWidth = 1;
   ctx.stroke();
+}
+
+function bezierTube(){
+  var radius = 90;
+  var points = 180;
+  var center = {
+    x: 300,
+    y: 300
+  }
+
+  var bezierRadius = 10;
+
+  var red = 0;
+  var green = 0;
+  var blue = 0;
+
+  for (var i = 5; i < 35; i++){
+    center.x /= 1.01;
+    center.y /= 1.02;
+
+    red = -Math.pow((i-10)/12, 2) + 1;
+    red = red>=0?red*255:0;
+    green = -Math.pow((i-20)/12, 2) + 1;
+    green = green>=0?green*255:0;
+    blue = -Math.pow((i-30)/12, 2) + 1;
+    blue = blue>=0?blue*255:0;
+    var rgb = "rgb("+red+","+green+","+blue+")";
+    bezierRound(radius+(i*1), points, center, bezierRadius, rgb);
+  }
+}
+
+
+  bezierTube();
+
+
+// var interval = setInterval(function(){
+//   ctx.clearRect(0, 0, canvas.width, canvas.height);
+//   bezierTube();
+// }, 60);
+
+// setTimeout(function(){
+//   clearInterval(interval);
+// }, 2000)
+
+  //  ctx.bezierCurveTo(140, 10, 338, 10, 388, 170);
 
   /*ctx.beginPath();
   ctx.moveTo(188, 150);
