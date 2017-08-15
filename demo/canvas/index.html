@@ -25,8 +25,138 @@
   var canvas = document.getElementById("c");
   var ctx = canvas.getContext("2d");
 
-  
-function bezierRound(radius, points, center, bezierRadius, color){
+  var W = 150,
+      H = 75,
+      w = W/ -2,
+      h = H/ -2;
+  ctx.save();
+
+  ctx.translate(250, 150);
+  ctx.save();
+
+  ctx.rotate(Math.PI/4);
+  ctx.save();
+
+  ctx.scale(2, 2);
+  ctx.fillRect(w, h, W, H);
+
+  ctx.restore();
+  ctx.fillStyle = "yellow";
+  ctx.fillRect(w, h, W, H);
+
+  ctx.restore();
+  ctx.fillStyle = "red";
+  ctx.fillRect(w, h, W, H);
+
+  ctx.restore();
+  ctx.fillStyle = "green";
+  ctx.fillRect(w, h, W, H);
+
+  /*
+//  ctx.fillRect(10, 10, 100, 50);
+//  ctx.translate(250, 150);
+  ctx.fillStyle = "yellow";
+  //  ctx.scale(1, 0.5);
+//  ctx.rotate(Math.PI / 4);
+//  ctx.translate(50, 0);
+  ctx.fillRect(0, 0, 250, 100);
+  //  ctx.transform(1, 1, 0, 1, 0, 0);
+  ctx.setTransform(1 , 0.5, -0.5, 1, 0, 0);
+  ctx.fillStyle = "red";
+  ctx.fillRect(0, 0, 250, 100);
+  console.log(Math.sin(Math.PI/4));
+
+*/
+
+
+
+
+
+
+  /*var x = 250,
+      y = 140,
+      txt = "Hello, world!";
+  ctx.font = "30pt Calibri";
+  ctx.textAlign = "center";
+  ctx.fillStyle = "red";
+  ctx.fillText(txt, x, y);
+  var m = ctx.measureText(txt);
+  console.log(m);
+  ctx.beginPath();
+  ctx.moveTo(x - (m.width/2), y);
+  ctx.lineTo(x + (m.width/2), y);
+//  ctx.lineWidth = 15;
+//  ctx.strokeStyle = "black";
+  ctx.stroke();*/
+
+
+  /*ctx.strokeStyle = "red";
+  ctx.moveTo(5, 100);
+  ctx.lineTo(400, 100);
+  ctx.stroke();
+  ctx.font = "20pt Arial";
+//  ctx.fillStyle = "red";
+  str = "Hhello hello hello hello hellohellohello hello hello hello hello";
+//  ctx.textAlign = "start";
+  ctx.textBaseline = "alphabetic";
+  ctx.fillText(str, 5, 100);
+//  ctx.textAlign = "end";
+//  ctx.fillText(str, 150, 80);
+//  ctx.textAlign = "left";
+//  ctx.fillText(str, 150, 100);
+//  ctx.textAlign = "center";
+//  ctx.fillText(str, 150, 120);
+//  ctx.textAlign = "right";
+//  ctx.fillText(str, 150, 140);
+//  ctx.strokeStyle = "blue";
+//  ctx.strokeText("Hello", 10, 200);
+  //  ctx.fill();
+*/
+
+  /*var img = new Image();
+  img.src = "imgs/pattern.gif";
+  img.onload = function(){
+      var p = ctx.createPattern(this, "no-repeat");
+      ctx.rect(0,0,500,500);
+      ctx.fillStyle = p;
+      ctx.fill();
+  };*/
+
+
+
+
+  /*ctx.rect(0, 0, 500, 500);
+  var grd = ctx.createRadialGradient(138, 50, 10, 238, 250, 300);
+  grd.addColorStop(0, "red");
+  grd.addColorStop(1, "silver");
+
+  ctx.fillStyle = grd;
+  ctx.fill();*/
+
+
+  /*ctx.beginPath();
+  ctx.rect(188, 50, 200, 100);
+  ctx.rect(188, 100, 300, 150);
+  ctx.fillStyle = "rgba(0,0,0,.2)";
+  ctx.fill();
+  ctx.lineWidth = 5;
+  ctx.stroke();*/
+
+  /*ctx.fillStyle = "rgba(0,0,0,.2)";
+  ctx.fillRect(188, 50, 200, 100);*/
+
+
+  /*ctx.beginPath();
+  ctx.moveTo(99, 150);
+  ctx.lineTo(149, 50);
+  ctx.lineTo(199, 150);
+  ctx.lineJoin = "bevel";
+
+  ctx.lineWidth = 15;
+  ctx.stroke();*/
+
+
+/*function bezierRound(radius, points, center, bezierRadius, color){
   ctx.beginPath();
   ctx.strokeStyle = color;
   var prevX = center.x;
@@ -89,7 +219,7 @@ function bezierTube(){
 }
 
 
-  bezierTube();
+bezierTube();*/
 
 
 // var interval = setInterval(function(){

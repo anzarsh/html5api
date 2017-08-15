@@ -2,6 +2,7 @@
 <html>
 
 <head>
+  <meta charset="utf-8">
   <title>HTML5 API. Лабораторная работа: обтекание текстом</title>
   <style>
     body {
@@ -19,6 +20,7 @@
 
 <body>
   <canvas id="canvas" width="600" height="300"></canvas>
+  <p id="p"></p>
   <script>
     var text = "Lorem ipsum dolor sit amet, coram posset diam ' deo. Volentes mihi quidditas patria Utinam rediit in modo compungi mulierem ubi confudit huc est se sed. Suave canere se sed dominum in fuerat accidens quam dicentes parem. Erige me missam ne velocitate mare convivio ubi diu perdidi si non solutionem innocentem tantusque amorem infirmata dictum in. Lorem ipsum dolor sit amet, coram posset diam ' deo. Volentes mihi quidditas patria Utinam rediit in modo compungi mulierem ubi confudit huc est se sed. Suave canere se sed dominum in fuerat accidens quam dicentes parem. Erige me missam ne velocitate mare convivio ubi diu perdidi si non solutionem innocentem tantusque amorem infirmata dictum in.";
     /*
@@ -34,7 +36,60 @@
         Межстрочный интервал: 25
     **		
     */
+    document.getElementById("p").innerText = text;
+    var canvas = document.getElementById("canvas");
+    var ctx = canvas.getContext("2d");
+
+    var textArr = text.split(' ');
+    ctx.font = "16px Arial";
+    var textWidthArr = [];
+    var spaceWidth = ctx.measureText(" ").width;
+    var height = 16;
+    for (var i = 0; i < textArr.length; i++){
+        textWidthArr.push(ctx.measureText(textArr[i]).width);
+    }
+
+    for (var i = 0; i < textArr.length;) {
+        var tempI = i;
+        for (var accumulate = textWidthArr[i];
+             accumulate < canvas.width && i < textArr.length;
+             accumulate += textWidthArr[++i] + spaceWidth);
+        ctx.fillText(textArr.slice(tempI, i).join(" "), 0, height);
+        height += 16;
+    }
+//    var width = ctx.measureText(text).width;
+//    var lines = width/canvas.width;
+//    var chars = Math.ceil( text.length / lines );
+//    console.log(chars);
+//    ctx.fillText(text.substring(0, chars), 0, 16);
   </script>
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
