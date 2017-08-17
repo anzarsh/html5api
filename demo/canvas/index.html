@@ -9,23 +9,76 @@
       margin: 0;
       padding: 0;
     }
-    
-    canvas {
+
+  canvas {
       display: block;
       margin: 20px auto 0;
       border: 1px dotted purple;
-    }
+  }
   </style>
-</head>
+  </head>
 
-<body>
+  <body>
   <canvas id="c" width="500" height="500"></canvas>
-</body>
-<script>
+      </body>
+      <script>
   var canvas = document.getElementById("c");
   var ctx = canvas.getContext("2d");
 
-  var W = 150,
+  ctx.fillStyle = "yellow";
+  ctx.fillRect(10,10,50,50);
+  var imgData = ctx.getImageData(10,10,50,50);
+  console.log(imgData);
+  ctx.putImageData(imgData, 10, 70);
+
+  var imgData2 = ctx.createImageData(100, 100);
+  for(var i=0; i<imgData2.data.length; i+=4){
+      imgData2.data[i+0] = 255;
+      imgData2.data[i+1] = 0;
+      imgData2.data[i+2] = 0;
+      imgData2.data[i+3] = 255;
+  }
+  ctx.putImageData(imgData2, 100, 70);
+  var dataURL = canvas.toDataURL("image/jpeg", 1);
+  console.log(dataURL);
+
+
+  /*var img = new Image();
+  img.src = "imgs/picture.jpg";
+  img.onload = function(){
+      ctx.drawImage(img, 10, 10, 210, 160, 0, 0, 100, 75);
+  };*/
+
+
+  /*ctx.beginPath();
+//  ctx.fillStyle = "yellow";
+  ctx.strokeStyle = "blue";
+  ctx.rect(200, 40, 200, 100);
+  ctx.rect(300, 90, 200, 100);
+  ctx.rect(100, 60, 200, 100);
+//  ctx.stroke();
+  ctx.save();
+  ctx.clip();
+  ctx.fillStyle = "red";
+  ctx.fillRect(150, 0, 200, 100);
+  ctx.beginPath();
+  ctx.fillStyle = "red";
+  ctx.fillRect(250, 100, 200, 100);
+  ctx.rect(202, 42, 200, 100);
+  ctx.stroke();
+
+//  ctx.beginPath();
+  ctx.restore();
+  ctx.rect(202, 242, 200, 100);
+  ctx.stroke();
+//  ctx.globalAlpha = .5;
+//  ctx.arc(320, 120, 60, 0, 2*Math.PI, false);
+//  ctx.fillStyle = "gray";
+//  ctx.fill();
+//  ctx.clip();
+*/
+
+  /*var W = 150,
       H = 75,
       w = W/ -2,
       h = H/ -2;
@@ -50,7 +103,7 @@
 
   ctx.restore();
   ctx.fillStyle = "green";
-  ctx.fillRect(w, h, W, H);
+  ctx.fillRect(w, h, W, H);*/
 
   /*
 //  ctx.fillRect(10, 10, 100, 50);
